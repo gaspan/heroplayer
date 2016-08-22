@@ -1,0 +1,49 @@
+<!-- Wait screen -->
+<div class="wait" ng-show="Player.wait">
+  <span><img src="/img/loading2.gif" alt=""></span>
+</div>
+
+
+<form class="row" ng-submit="Player.create()" enctype="multipart/form-data">
+	<h5 class="bold form-header">ADICIONAR MÚSICA</h5>
+	<input type="hidden" ng-model="Player.dataForm._token" ng-init="Player.dataForm._token = Player.token">
+	<input type="hidden" ng-model="Player.dataForm.id">
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="art row text-center">
+				<div class="cover">
+					<img src="{{ image_source }}" ng-show="image_source" alt="">
+				</div>
+			</div>
+			<div class="row text-center file ghost">
+				<input type="file" ng-model="Player.dataForm.art" onchange="angular.element(this).scope().setFile(this)" accept="image/*">
+				<button class="btn btn-danger">Enviar imagem</button>				
+			</div>
+		</div>
+		<div class="col-sm-8">
+		  <div class="form-group">
+		    <span>Link do Youtube</span>
+		    <input type="text" ng-model="Player.dataForm.link" class="form-control" name="link" id="link" aria-describedby="linkHelp" placeholder="Insira o link da música">
+		    <small id="linkHelp" class="form-text text-muted">Isso é legal? Não sei, mas não me processem</small>
+		  </div>
+		  <div class="form-group">
+		    <span>Título da música</span>
+		    <input type="text" ng-model="Player.dataForm.title" class="form-control" name="title" id="title" placeholder="Insira o título da música">
+		  </div>
+		  <div class="form-group">
+		    <span>Autor</span>
+		    <input type="text" ng-model="Player.dataForm.author" class="form-control" name="author" id="author" placeholder="Insira o autor da música">
+		  </div>
+		  <div class="form-group">
+		    <span>Tags</span>
+		    <input type="text" class="form-control" name="tag" id="tag" placeholder="Insira as tags separadas por vírgula" aria-describedby="tagHelp" >
+		    <small id="tagHelp" class="form-text text-muted">Ex.: Rock, MPB, Samba, Abertura de anime, etc</small>
+		  </div>
+		</div>
+	</div>
+	<div class="row form-footer">
+		<div class="col-sm-8 col-sm-offset-2">
+			<button type="submit" class="btn btn-primary ghost">Adicionar música</button>
+		</div>
+	</div>
+</form>

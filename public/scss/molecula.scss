@@ -1,0 +1,127 @@
+/*
+* @Author: felipelopesrita
+* @Date:   2016-08-09 15:43:21
+* @Last Modified by:   felipelopesrita
+* @Last Modified time: 2016-08-18 19:56:25
+*/
+
+@import "utilities/variables";
+
+* {
+	cursor: default;
+	-webkit-user-select: none !important;  /* Chrome all / Safari all */
+  -moz-user-select: none !important;     /* Firefox all */
+  -ms-user-select: none !important;      /* IE 10+ */
+  user-select: none !important; 
+}
+nav {
+	height: $topbar-size;
+	line-height: $topbar-size;
+}
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+iframe#player {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 0;
+	width: 0;
+	//width: 100%;
+	//height: unquote("calc( #{$full} - #{$topbar-size} )");
+}
+div.progress {
+	z-index: 3;
+	border-radius: 0 !important;	
+	margin: 0;
+	cursor: pointer;
+	
+	.determinate {
+		cursor: pointer;
+		transition: none;
+	}
+
+}
+nav.bottom {
+	height: $bar-size + 5px;
+	box-shadow: 0 0 10px 0 $gray;
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none; 
+}
+.corpo {
+	padding: 0;
+	padding-bottom: 30px;
+	height: 100%;
+	overflow-y: auto;
+}
+.corpo .collection .collection-item .img, table .art {
+  width: $art-size;
+  height: $art-size;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+.corpo .collection .collection-item .img img, table .art img {
+	width: auto;
+	height: $art-size;	
+}
+
+.corpo .input-field input[type=search]:focus {
+	background-color: transparent;
+	color: white;
+}
+.corpo .input-field input[type=search]:focus+label i, .corpo .input-field input[type=search]:focus ~ .material-icons {
+	color: white;
+}
+
+/* Cabeçalho de páginas */
+.form-header, .form-footer {
+	display: block;
+	margin: 0;
+	margin-bottom: $margin;
+	padding: $margin * 1.5;
+}
+.form-header {
+	border-bottom: thin solid $light-gray;
+}
+.form-footer {
+	border-top: thin solid $light-gray;
+}
+
+/* Button */
+button.btn, button.btn:hover, button.btn:focus, button.btn:active, button.btn:active:focus {
+	background-color: transparent;
+	outline: none;
+	color: #204d74;
+	font-weight: 300;
+	box-shadow: none;
+}
+button.btn-danger {
+	color: #d43f3a;
+}
+button.btn-danger:hover {
+	color: #ac2925;
+}
+button.btn-danger:active, button.btn-danger:focus, button.btn-danger:active:focus {
+	color: #761c19;
+}
+
+/* Input file */
+div.file {
+	position: relative;
+}
+div.file input[type=file] {
+	opacity: 0;
+	cursor: pointer;
+	background-color: tomato;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+

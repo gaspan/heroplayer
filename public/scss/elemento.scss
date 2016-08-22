@@ -1,0 +1,89 @@
+/*
+* @Author: felipelopesrita
+* @Date:   2016-08-09 15:43:53
+* @Last Modified by:   felipelopesrita
+* @Last Modified time: 2016-08-22 15:17:21
+*/
+
+@import "utilities/variables";
+
+body {
+	background-color: $bg;
+}
+
+body section.container, body section.container .full-h, body section.container .border {
+	height: 100%;
+	margin-top: 0;
+}
+body section.container .border {
+	background-color: #FFF;
+	border-top: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+body section.container .border .row {
+	margin: 0;
+}
+
+/* Navbar */
+.navbar {
+	border-radius: 0;
+	margin-bottom: 0;
+}
+.navbar-brand {
+	padding: 5px 15px;
+	line-height: $bar-size;
+}
+
+/* Cards */
+.card {
+	border: thin solid $light-gray;
+	box-shadow: 0 0 10px 0 $gray;
+	.card-img-top {
+		width: 100%;
+		height: auto;
+	}
+	.card-img {
+		position: relative;
+		.card-img-hover {
+			background-color: rgba(255, 255, 255, 0.7);
+			position: absolute;
+			text-align: center;
+		  align-items: center;
+		  cursor: pointer;
+			display: flex;
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			left: 0;
+			top: 0;
+			i {
+				cursor: pointer;
+				display: block;
+				width: 100%;
+			}
+		}
+		.card-img-hover:hover {
+			opacity: 1;
+		}
+	}
+	.card-block {
+		padding: 10px;
+	}
+}
+
+/* Wait */
+.wait {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 5;
+	text-align: center;
+	display: flex;
+  align-items: center;
+}
+.wait span {
+	display: block;
+	width: 100%;
+}

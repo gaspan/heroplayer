@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-sm-3 top-buffer" ng-repeat="song in Song.songs">
+		<div class="card">
+			<div class="card-image">
+				<div class="card-img">
+				  <img class="card-img-top" src="/api/art/{{ song.video }}.jpg" alt="Card image cap">					
+					<div class="card-img-hover" ng-click="Song.play(song.video)">
+						<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+		  <div class="card-block">
+		    <h4 class="card-title">{{ song.title }}</h4>
+		    <p class="card-text">{{ song.author }}</p>
+		  </div>
+		</div>
+	</div>
+</div>
