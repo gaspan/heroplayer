@@ -38,6 +38,7 @@
 		    <i class="fa fa-play ghost big" aria-hidden="true" ng-click="Song.playSong()" ng-show="Song.toogle.paused"></i>
 		    <i class="fa fa-pause ghost big" aria-hidden="true" ng-click="Song.songPaused()" ng-hide="Song.toogle.paused"></i>
 		    <i class="fa fa-repeat ghost" ng-class="{'active':Song.toogle.repeat}" ng-click="Song.repeat()" aria-hidden="true"></i>
+		    <span class="ghost">{{Song.audio.currentTime | trackTime}} / {{Song.audio.audio.duration | trackTime}}</span>  
   		</div>
   	</div>
   </div>
