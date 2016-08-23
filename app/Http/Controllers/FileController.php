@@ -54,7 +54,8 @@ class FileController extends Controller
     $public  = Storage::disk('public');
     $dropbox = Storage::disk('dropbox');
     
-    if( $disk->exists($name) )
+    //Se está guardado no servidor, retorna o que tá guardado
+    if( $public->exists($name) )
       return response()->file( storage_path('app/public').'/'.$name );
     else if( !$dropbox->exists( $name ) )
   		return response()->json([ 'message' => 'File not found' ], 404);
@@ -67,6 +68,7 @@ class FileController extends Controller
     $response->header( 'Content-Type', $mime );
     $response->header( 'Content-Length', $filesize );
 
+    //Guarda no servidor para evitar acesso a dropbox, porque as vezes acessar o dropbox custa tempo
     $public->put( $name, $file );
 
     return $response;
