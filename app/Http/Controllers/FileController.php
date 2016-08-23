@@ -18,12 +18,14 @@ class FileController extends Controller
   public function __construct() {
     
     /* Cria o simbolic link se ele não existir */
+    /*
     $storage = storage_path('app/public');
     $public  = public_path();
     $public  = $public.'/storage';
 
     if( !file_exists($public) )
       symlink( $storage, $public );
+    */
   }
 
 	public function saveSong( ) {
