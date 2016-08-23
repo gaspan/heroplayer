@@ -2,11 +2,11 @@
 * @Author: felipelopesrita
 * @Date:   2016-08-10 03:14:56
 * @Last Modified by:   felipelopesrita
-* @Last Modified time: 2016-08-22 17:21:51
+* @Last Modified time: 2016-08-23 00:23:33
 */
 
 angular.module('heroplayer')
-	.service( 'PlayerService', [ '$http', 'WebService', function( $http, WebService ){
+	.service( 'PlayerService', [ '$http', 'WebService', 'ngAudio', function( $http, WebService, ngAudio ){
 		
 		function query( data ) {
 			var fd = new FormData();
@@ -27,14 +27,18 @@ angular.module('heroplayer')
 		function getSongs() {
 			return WebService.get('song');
 		}
+		function deleteSong( id ) {
+			return WebService.delete(`song/${id}`);
+		}
 		function createAudio( id ) {
-			return new Audio( WebService.getUrl( `song/${id}.mp3` ) );
+			return ngAudio.load( WebService.getUrl( `song/${id}.mp3` ) );
 		}
 		return {
 			query,
 			getId,
 			getSongs,
-			createAudio
+			createAudio,
+			deleteSong
 		}
 		
 	}] );

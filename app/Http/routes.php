@@ -23,6 +23,7 @@ Route::get('/api/search/{q}', 'YoutubeController@busca');
 
 //Api para gestão de músicas
 Route::get('/api/song', 'MusicController@lista');
+Route::delete('/api/song/{id}', 'MusicController@remove');
 
 //Api para gestão de arquivos
 Route::post('/api/song', 'FileController@saveSong');

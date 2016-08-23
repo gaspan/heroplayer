@@ -2,7 +2,7 @@
 * @Author: felipelopesrita
 * @Date:   2016-08-09 15:43:21
 * @Last Modified by:   felipelopesrita
-* @Last Modified time: 2016-08-18 19:56:25
+* @Last Modified time: 2016-08-22 23:03:18
 */
 
 @import "utilities/variables";
@@ -125,3 +125,12 @@ div.file input[type=file] {
 	height: 100%;
 }
 
+/* Progress bar */
+.progress {
+	background-color: $progress-bar;
+	height: 3px;
+	.determinate {
+		background-color: $progress;
+		height: 100%;
+	}
+}

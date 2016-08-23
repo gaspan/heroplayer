@@ -10,4 +10,9 @@ class MusicController extends Controller
   	$items = [ 'id as video', 'title', 'author' ];
   	return Music::select( $items )->get();
   }
+
+  function remove( $id ) {
+  	$music = Music::find( $id );
+  	$music->delete();
+  }
 }

@@ -36,6 +36,7 @@
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/angular-audio/app/angular.audio.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/Services/webService.js"></script>
     <script src="/js/Services/playerService.js"></script>

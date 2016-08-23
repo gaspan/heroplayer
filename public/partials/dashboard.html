@@ -1,11 +1,12 @@
 <div class="row">
 	<div class="col-sm-3 top-buffer" ng-repeat="song in Song.songs">
-		<div class="card">
+		<div class="card" id="{{ song.video }}">
 			<div class="card-image">
 				<div class="card-img">
 				  <img class="card-img-top" src="/api/art/{{ song.video }}.jpg" alt="Card image cap">					
-					<div class="card-img-hover" ng-click="Song.play(song.video)">
-						<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+					<div class="card-img-hover">
+						<i class="fa fa-play fa-3x" ng-click="Song.play(song.video)" aria-hidden="true"></i>
+						<i class="fa fa-trash absolute top right fa-2x" ng-click="Song.remove(song.video)" aria-hidden="true"></i>
 					</div>
 				</div>
 			</div>
@@ -15,4 +16,29 @@
 		  </div>
 		</div>
 	</div>
+	<div class="col-sm-3 top-buffer ghost">
+		<div class="card card-link">
+			<a href="/#/new">
+			  <div class="card-block">
+			    <h4 class="card-title">Adicionar música</h4>
+			    <p class="card-text">Clique aqui para adicionar uma música do Youtube</p>
+			  </div>				
+			</a>
+		</div>
+	</div>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom print">
+  <div class="progress" ng-click="Song.changeExecution($event)">
+    <div class="determinate" style="width: {{ Song.time }}%"></div>
+  </div>
+  <div class="nav-wrapper controls container">
+  	<div class="row">
+  		<div class="col-sm-10 col-sm-offset-1">
+		    <i class="fa fa-play ghost big" aria-hidden="true" ng-click="Song.playSong()" ng-show="Song.toogle.paused"></i>
+		    <i class="fa fa-pause ghost big" aria-hidden="true" ng-click="Song.songPaused()" ng-hide="Song.toogle.paused"></i>
+		    <i class="fa fa-repeat ghost" ng-class="{'active':Song.toogle.repeat}" ng-click="Song.repeat()" aria-hidden="true"></i>
+  		</div>
+  	</div>
+  </div>
+</nav>
