@@ -18,14 +18,12 @@ class FileController extends Controller
   public function __construct() {
     
     /* Cria o simbolic link se ele não existir */
-    /*
     $storage = storage_path('app/public');
     $public  = public_path();
     $public  = $public.'/storage';
 
     if( !file_exists($public) )
       symlink( $storage, $public );
-    */
   }
 
 	public function saveSong( ) {
@@ -53,16 +51,23 @@ class FileController extends Controller
 
   public function getFile( $name ) {
   	
-  	if( !Storage::exists( $name ) )
+    $public  = Storage::disk('public');
+    $dropbox = Storage::disk('dropbox');
+    
+    if( $disk->exists($name) )
+      return response()->file( storage_path('app/public').'/'.$name );
+    else if( !$dropbox->exists( $name ) )
   		return response()->json([ 'message' => 'File not found' ], 404);
 
-  	$filesize = (int) Storage::size( $name );
-    $file = Storage::get( $name );
-    $mime = Storage::mimeType( $name );
+  	$filesize = (int) $dropbox->size( $name );
+    $file = $dropbox->get( $name );
+    $mime = $dropbox->mimeType( $name );
 
-    $response = Response::make($file, 200);
-    $response->header('Content-Type', $mime);
-    $response->header('Content-Length', $filesize);
+    $response = Response::make( $file, 200 );
+    $response->header( 'Content-Type', $mime );
+    $response->header( 'Content-Length', $filesize );
+
+    $public->put( $name, $file );
 
     return $response;
   }
