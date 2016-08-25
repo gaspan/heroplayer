@@ -3,7 +3,12 @@
 		<div class="card" id="{{ song.video }}">
 			<div class="card-image">
 				<div class="card-img">
-				  <img class="card-img-top" src="/api/art/{{ song.video }}.jpg" alt="Card image cap">					
+					<div ng-if="song.art !== 'undefined'">
+					  <img class="card-img-top" src="/api/art/{{ song.video }}.jpg" alt="Card image cap">						
+					</div>
+					<div ng-if="song.art === 'undefined'">
+					  <img class="card-img-top" src="/images/bgc.jpg" alt="Card image cap">						
+					</div>
 					<div class="card-img-hover">
 						<i class="fa fa-play fa-3x" ng-click="Song.play(song.video)" aria-hidden="true"></i>
 						<i class="fa fa-trash absolute top right fa-2x" ng-click="Song.remove(song.video)" aria-hidden="true"></i>

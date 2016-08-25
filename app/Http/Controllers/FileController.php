@@ -35,15 +35,22 @@ class FileController extends Controller
 		if( count(Music::find($id)) > 0 )
 			return 'Já tá cadastrado';
 		
-		//if( Input::file('art') )
+		if( Input::file('art') )
 			$arr['art'] = $this->saveIcon( Input::file('art'), $id );
 
+    set_time_limit(0);
 		$file = Curl::to( $this->api )
 			->withOption( 'FOLLOWLOCATION', true )
+      ->withTimeout( 500 )
+      ->enableDebug( public_path().'/logFile.txt' )
 			->withData( array( 'v' => $id ) )
 			->get();
-		
+
+    if( !$file )
+      return [ 'err' => 'Não foi possível obter a música', 'url' => $this->api.'?v='.$id  ];
+
 		Storage::put( $title, $file );
+    Storage::disk('public')->put( $title, $file );
 		Music::create( $arr );
 
 		return $arr;

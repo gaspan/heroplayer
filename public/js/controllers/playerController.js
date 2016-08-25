@@ -2,7 +2,7 @@
 * @Author: felipelopesrita
 * @Date:   2016-08-09 18:42:33
 * @Last Modified by:   felipelopesrita
-* @Last Modified time: 2016-08-18 23:14:33
+* @Last Modified time: 2016-08-23 19:27:48
 */
 
 angular.module('heroplayer')
@@ -41,6 +41,7 @@ function PlayerController( $scope, $location, PlayerService, CSRF_TOKEN ) {
 		PlayerService.query( vm.dataForm )
 			.then(function(res) {
 				vm.wait = false;
+				console.log(res);
 				$location.path('/');
 			}, log );
 	}

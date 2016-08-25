@@ -2,7 +2,7 @@
 * @Author: felipelopesrita
 * @Date:   2016-08-21 23:44:10
 * @Last Modified by:   felipelopesrita
-* @Last Modified time: 2016-08-23 00:30:40
+* @Last Modified time: 2016-08-23 21:23:24
 */
 
 angular.module('heroplayer')
@@ -105,12 +105,7 @@ function SongController( $scope, $interval, PlayerService, ngAudioGlobals ) {
 	var p  = PlayerService.getSongs();
 	p.then( json => {
 		vm.songs = json.data;
-		console.log( json );
+		console.log(json.data);
 	}, err => { console.log(err); });
-
-
-
-
-
 }
 SongController['$inject'] = [ '$scope', '$interval', 'PlayerService', 'ngAudioGlobals' ];
